@@ -1,18 +1,18 @@
 package h02;
 
-//Voorbeeld 2.2
+//Opdracht 2.1
 
 import java.awt.*;
 import java.applet.*;
 
-public class Show extends Applet {
+public class Applet01 extends Applet {
 
     public void init() {
-        setBackground(Color.magenta);
+        setBackground(Color.blue);
     }
 
     public void paint(Graphics g) {
         g.setColor(Color.yellow);
-        g.drawString("Welcome to Java!!", 50, 60 );
+        g.drawString("Stijn", 50, 60 );
     }
 }
