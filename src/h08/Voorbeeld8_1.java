@@ -6,7 +6,7 @@ import java.awt.*;
 import java.applet.*;
 
 
-public class voorbeeld8_1 extends Applet {
+public class Voorbeeld8_1 extends Applet {
     Button knop;
 
     public void init() {

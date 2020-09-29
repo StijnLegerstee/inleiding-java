@@ -6,10 +6,6 @@ import java.awt.*;
 import java.applet.*;
 
 public class opdracht5_2 extends Applet {
-
-    //hoogte
-    int hoogte;
-
     //gewicht
     int gewichtvalerie, gewichtjeroen, gewichthans;
 
