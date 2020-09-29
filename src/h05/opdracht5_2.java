@@ -49,11 +49,11 @@ public class opdracht5_2 extends Applet {
         g.drawString("Hans",205,235);
         //Balken
         g.setColor(Color.pink);
-        g.fillRect(55,140,35,80);
+        g.fillRect(55, 220 - gewichtvalerie * 2,35,gewichtvalerie * 2);
         g.setColor(Color.blue);
-        g.fillRect(125,20,35,200);
+        g.fillRect(125,220 - gewichtjeroen * 2,35,gewichtjeroen * 2);
         g.setColor(Color.green);
-        g.fillRect(205,60,35,160);
+        g.fillRect(205,220 - gewichthans * 2,35,gewichthans * 2);
         //Info
         g.setColor(Color.black);
         g.drawString("Hoogte = gewicht in kilogram",50,280);
