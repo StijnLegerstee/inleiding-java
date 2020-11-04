@@ -23,7 +23,7 @@ public class Opdracht10_2 extends Applet {
         uitkomst = "";
         laagsteUitkomst = "";
         highestNumber = 0;
-        lowestNumber = 0;
+        lowestNumber = 10000;
         add(info);
         add(tekstvak);
     }
