@@ -13,7 +13,8 @@ public class Opdracht10_2 extends Applet {
     String uitkomst;
     String laagsteUitkomst;
     int ingevoerdeGetal;
-    int uitgevoerdeGetal;
+    int highestNumber;
+    int lowestNumber;
 
     public void init() {
         tekstvak = new TextField("", 20);
@@ -21,7 +22,8 @@ public class Opdracht10_2 extends Applet {
         tekstvak.addActionListener( new TekstvakListener() );
         uitkomst = "";
         laagsteUitkomst = "";
-        uitgevoerdeGetal = 0;
+        highestNumber = 0;
+        lowestNumber = 0;
         add(info);
         add(tekstvak);
     }
@@ -34,22 +36,20 @@ public class Opdracht10_2 extends Applet {
     class TekstvakListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-
             String userInput = tekstvak.getText();
             ingevoerdeGetal = Integer.parseInt(userInput);
-            System.out.println(ingevoerdeGetal);
-            System.out.println(uitgevoerdeGetal);
-            if (ingevoerdeGetal > uitgevoerdeGetal) {
-                uitgevoerdeGetal = ingevoerdeGetal;
-                System.out.println(uitgevoerdeGetal);
-                uitkomst = "Het hoogste getypte getal is: " +uitgevoerdeGetal;
+
+            if (ingevoerdeGetal > highestNumber) {
+                highestNumber = ingevoerdeGetal;
+                uitkomst = "Het hoogste getypte getal is: " + highestNumber;
             }
-            if (ingevoerdeGetal < uitgevoerdeGetal) {
-                uitgevoerdeGetal = ingevoerdeGetal;
-                laagsteUitkomst = "Het laagste getypte getal is: " +uitgevoerdeGetal;
+            if (ingevoerdeGetal < lowestNumber) {
+                lowestNumber = ingevoerdeGetal;
+                laagsteUitkomst = "Het laagste getypte getal is: " + lowestNumber;
             }
 
             repaint();
         }
+
     }
 }
