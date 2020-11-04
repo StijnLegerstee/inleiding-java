@@ -11,44 +11,92 @@ import java.awt.event.ActionListener;
 public class Opdracht8_2 extends Applet {
     Button Mannen;
     Button Vrouwen;
-    Button PotentieeleMannen;
-    Button PotentieeleVrouwen;
+    Button PotentieleMannen;
+    Button PotentieleVrouwen;
+    int countertotaal;
+    int mannencounter;
+    int vrouwencounter;
+    int potentielemannencounter;
+    int potentielevrouwencounter;
 
     public void init() {
         Mannen = new Button("Mannen");
         Vrouwen = new Button("Vrouwen");
-        PotentieeleMannen = new Button("PotentieeleMannen");
-        PotentieeleVrouwen = new Button("PotentieeleVrouwen");
+        PotentieleMannen = new Button("Potentiële Mannen");
+        PotentieleVrouwen = new Button("Potentiële Vrouwen");
         add(Mannen);
         add(Vrouwen);
-        add(PotentieeleMannen);
-        add(PotentieeleVrouwen);
+        add(PotentieleMannen);
+        add(PotentieleVrouwen);
+        countertotaal = 0;
+        mannencounter = 0;
+        vrouwencounter = 0;
+        potentielemannencounter = 0;
+        potentielevrouwencounter = 0;
 
-        Mannen.addActionListener(new TextToTerminalListener());
-        Vrouwen.addActionListener(new TextToTerminalListener());
-        PotentieeleMannen.addActionListener(new TextToTerminalListener());
-        PotentieeleVrouwen.addActionListener(new TextToTerminalListener());
+        Mannen.addActionListener(new TotaalAantal());
+        Vrouwen.addActionListener(new TotaalAantal());
+        PotentieleMannen.addActionListener(new TotaalAantal());
+        PotentieleVrouwen.addActionListener(new TotaalAantal());
+
+        Mannen.addActionListener(new MannenCounter());
+        Vrouwen.addActionListener(new VrouwenCounter());
+        PotentieleMannen.addActionListener(new PotentieleMannenCounter());
+        PotentieleVrouwen.addActionListener(new PotentieleVrouwenCounter());
     }
 
     public void paint(Graphics g) {
         Mannen.setLocation(20,20);
         Mannen.setSize(50,20);
+        g.drawString("Aantal mannen: " + mannencounter,80,35);
 
         Vrouwen.setLocation(20,50);
         Vrouwen.setSize(50,20);
+        g.drawString("Aantal vrouwen: " + vrouwencounter,80,65);
 
-        PotentieeleMannen.setLocation(20,20);
-        PotentieeleMannen.setSize(50,20);
+        PotentieleMannen.setLocation(20,80);
+        PotentieleMannen.setSize(110,20);
+        g.drawString("Aantal potentiële mannen: " + potentielemannencounter,140,95);
 
-        PotentieeleVrouwen.setLocation(20,50);
-        PotentieeleVrouwen.setSize(50,20);
+        PotentieleVrouwen.setLocation(20,110);
+        PotentieleVrouwen.setSize(110,20);
+        g.drawString("Aantal potentiële vrouwen: " + potentielevrouwencounter,140,125);
+
+        g.drawString("Totaal: " + countertotaal,20,180);
     }
 
-    class TextToTerminalListener implements ActionListener {
+    class TotaalAantal implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            String message = iets.getText();
-            ietsandrs.setText(message);
+            countertotaal++;
+            repaint();
+        }
+    }
+    class MannenCounter implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            mannencounter++;
+            repaint();
+        }
+    }
+    class VrouwenCounter implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            vrouwencounter++;
+            repaint();
+        }
+    }
+    class PotentieleMannenCounter implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            potentielemannencounter++;
+            repaint();
+        }
+    }
+    class PotentieleVrouwenCounter implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+            potentielevrouwencounter++;
             repaint();
         }
     }
