@@ -16,22 +16,26 @@ public class Opdracht10_5 extends Applet {
     double TotaalCijfers;
     int TotaalAantalCijfers;
     double gemiddelde;
+    String gemiddeldeCijfer;
 
     public void init() {
         tekstvak = new TextField("",30);
-        tekstvak.addActionListener(new CijferListener());
         Cijfer = "...";
+        gemiddeldeCijfer = "Druk op 'OK' om je gemiddelde cijfer te zien.";
         okKnop = new Button("OK");
         TotaalCijfers = 0;
         TotaalAantalCijfers = 0;
         gemiddelde = 0;
         add(tekstvak);
         add(okKnop);
+
+        tekstvak.addActionListener(new CijferListener());
+        okKnop.addActionListener(new okKnopListener());
     }
 
     public void paint(Graphics g) {
         g.drawString("Vul je cijfer in.",50,50);
-        g.drawString("Gemiddelde cijfer: "+ gemiddelde,50,80);
+        g.drawString(gemiddeldeCijfer,50,80);
         tekstvak.setLocation(50,100);
         g.drawString(Cijfer,50,190);
         okKnop.setLocation(10,100);
@@ -74,5 +78,34 @@ public class Opdracht10_5 extends Applet {
             repaint();
         }
     }
+    class okKnopListener implements ActionListener {
 
+        public void actionPerformed(ActionEvent e) {
+            String userInput = tekstvak.getText();
+            ingevoerdeCijfer = Double.parseDouble(userInput);
+
+            if (ingevoerdeCijfer > 5.5) {
+                gemiddeldeCijfer = "Gemiddelde cijfer is: " + gemiddelde;
+            }
+            if (ingevoerdeCijfer < 5.5) {
+
+            }
+            if (ingevoerdeCijfer == 5.5) {
+
+            }
+            if (ingevoerdeCijfer > 10) {
+                TotaalAantalCijfers = +0;
+                TotaalCijfers = +0;
+                gemiddelde = +0;
+            }
+            if (ingevoerdeCijfer < 1) {
+                TotaalAantalCijfers = +0;
+                TotaalCijfers = +0;
+                gemiddelde = +0;
+            }
+
+            tekstvak.setText("");
+            repaint();
+        }
+    }
 }
