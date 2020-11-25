@@ -13,10 +13,12 @@ public class Opdracht11_5 extends Applet {
 
         g.setColor(Color.GRAY);
         int x = 20;
+        int y = 20;
         int formaat = 15;
-        for (int i = 0; i < 10; i++) {
-            g.drawRect(x, 20, formaat, formaat);
-            x += 20;
+        for (int i = 0; i < 5; i++) {
+            g.drawRect(x, y, formaat, formaat);
+            x += 15;
+            y += 15;
         }
     }
 }
