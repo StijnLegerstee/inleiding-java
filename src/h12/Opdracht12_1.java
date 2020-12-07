@@ -4,24 +4,25 @@ import java.applet.Applet;
 import java.awt.*;
 
 public class Opdracht12_1 extends Applet {
-    double[] numbers;
-    double sum;
-    double average;
+    int[] getallen = {8, 3, 7, 21, 1, 18, 64, 29, 2, 69};
+    double gemiddelde;
 
     public void init() {
-        numbers = new double[10];
-        sum = 0;
-//        numbers[0] = 1;
-//        numbers[1] = 2;
-        for (int indexNumber  = 0; indexNumber < numbers.length; indexNumber++){
-            numbers[indexNumber] = indexNumber;
-            sum = sum + numbers[indexNumber];
-        }
-        System.out.println(sum / numbers.length);
+        double totaal = 0;
+        for (int i = 0; i < getallen.length; i++) {
+            totaal += getallen[i];
 
+        }
+        gemiddelde = totaal / getallen.length;
     }
 
     public void paint(Graphics g) {
-        g.drawString("Het gemiddelde is: " + sum / numbers.length, 100, 100);
+        int y = 20;
+        for (int i = 0; i < getallen.length; i++) {
+            g.drawString("" + getallen[i],20, y);
+            y += 20;
+
+        }
+        g.drawString("Gemiddelde: " + gemiddelde,20, y);
     }
 }
