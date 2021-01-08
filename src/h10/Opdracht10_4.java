@@ -1,7 +1,5 @@
 package h10;
 
-// Opdracht 10.4
-
 import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,72 +7,113 @@ import java.awt.event.ActionListener;
 
 public class Opdracht10_4 extends Applet {
 
-    TextField tekstvak;
-    String greeting, tekst;
-    int jaartal;
+    //Decleratie
+    Label Label;
+    TextField TekstMaand;
+    TextField TekstJaar;
+    String StringMaand;
+    String StringDagen;
+    String StringJaar;
+    String Uitkomst;
+    double DoubleMaand;
+    double DoubleJaar;
 
     public void init() {
-        tekstvak = new TextField("",30);
-        add(tekstvak);
-        tekstvak.addActionListener(new GroetListener());
-        greeting = "...";
-        tekst = "...";
+
+        //Initialisatie
+        setSize(500, 200);
+        Uitkomst = "";
+        StringMaand = "Geen geldig getal";
+        Label = new Label("Voer het nummer van de maand in en druk op enter!");
+        TekstMaand = new TextField("",10);
+        TekstJaar = new TextField("",10);
+        TekstJaar.addActionListener(new textlistenertmaand());
+        TekstMaand.addActionListener(new textlistenertmaand());
+
+        add(Label);
+        add(TekstMaand);
+        add(TekstJaar);
     }
 
     public void paint(Graphics g) {
-        g.drawString("Kies een maandnummer.",50,50);
-        tekstvak.setLocation(50,100);
-        g.drawString(greeting,50,190);
-        g.drawString(tekst,50,160);
+        g.drawString(Uitkomst,20,80);
     }
 
-    class GroetListener implements ActionListener {
-
+    private class textlistenertmaand implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            String maandUserInput = tekstvak.getText();
-            String jaarUserInput = tekstvak.getText();
-            jaartal = Integer.parseInt( jaarUserInput);
-
-            if ( (jaartal % 4 == 0 && !(jaartal % 100 == 0)) ||
-                    jaartal % 400 == 0 ) {
-                tekst = "Het jaar is nu "+ jaartal + " en het is een schrikkeljaar";
-                greeting = "Febuari is de tweede maand en heeft 28 dagen.";
+            StringMaand = TekstMaand.getText();
+            StringJaar = TekstJaar.getText();
+            DoubleMaand = Double.parseDouble(StringMaand);
+            DoubleJaar = Double.parseDouble(StringJaar);
+            if (DoubleMaand == 1) {
+                StringMaand = "Januari";
+                StringDagen = "31";
+                Uitkomst = "Maand + aantal Dagen:  " + StringMaand + " en " + StringDagen + " dagen.";
             }
-            else {
-                tekst = "Het jaar is nu "+ jaartal + " en het is geen schrikkeljaar";
-
+            if ( (DoubleJaar % 4 == 0 && !(DoubleJaar % 100 == 0)) || DoubleJaar % 400 == 0 && DoubleMaand == 2) {
+                StringMaand = "Februari";
+                StringDagen = "29";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
             }
-
-            if (maandUserInput.equals("1")) {
-                greeting = "Januari is de eerste maand en heeft 31 dagen.";
-            } else if (maandUserInput.equals("2")) {
-                greeting = "Febuari is de tweede maand en heeft 29 dagen.";
-            } else if (maandUserInput.equals("3")) {
-                greeting = "Maart is de derde maand en heeft 31 dagen.";
-            } else if (maandUserInput.equals("4")) {
-                greeting = "April is de vierde maand en heeft 30 dagen.";
-            } else if (maandUserInput.equals("5")) {
-                greeting = "Mei is de vijfde maand en heeft 31 dagen.";
-            } else if (maandUserInput.equals("6")) {
-                greeting = "Juni is de zesde maand en heeft 30 dagen.";
-            } else if (maandUserInput.equals("7")) {
-                greeting = "Juli is de zevende maand en heeft 31 dagen.";
-            } else if (maandUserInput.equals("8")) {
-                greeting = "Augustus is de achtste maand en heeft 31 dagen.";
-            } else if (maandUserInput.equals("9")) {
-                greeting = "September is de negende maand en heeft 30 dagen.";
-            } else if (maandUserInput.equals("10")) {
-                greeting = "Oktober is de tiende maand en heeft 31 dagen.";
-            } else if (maandUserInput.equals("11")) {
-                greeting = "November is de elfde maand en heeft 30 dagen.";
-            } else if (maandUserInput.equals("12")) {
-                greeting = "December is de twaalfde maand en heeft 31 dagen.";
-            } else {
-                greeting = "...";
+            if (!(DoubleJaar % 4 == 0 && !(DoubleJaar % 100 == 0)) || DoubleJaar % 400 == 0 && DoubleMaand == 2) {
+                StringMaand = "Februari";
+                StringDagen = "28";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
             }
-            tekstvak.setText("");
+            if (DoubleMaand == 3) {
+                StringMaand = "Maart";
+                StringDagen = "31";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 4) {
+                StringMaand = "April";
+                StringDagen = "30";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 5) {
+                StringMaand = "Mei";
+                StringDagen = "31";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 6) {
+                StringMaand = "Juni";
+                StringDagen = "30";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 7) {
+                StringMaand = "Juli";
+                StringDagen = "31";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 8) {
+                StringMaand = "Augustus";
+                StringDagen = "31";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 9) {
+                StringMaand = "September";
+                StringDagen = "30";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 10) {
+                StringMaand = "Oktober";
+                StringDagen = "31";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 11) {
+                StringMaand = "November";
+                StringDagen = "30";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand == 12) {
+                StringMaand = "December";
+                StringDagen = "31";
+                Uitkomst = "Maand + aantal Dagen: " + StringMaand + " en " + StringDagen + " dagen.";
+            }
+            if (DoubleMaand >= 13){
+                Uitkomst = "Geen geldige maand";
+            }
             repaint();
         }
     }
-
 }
